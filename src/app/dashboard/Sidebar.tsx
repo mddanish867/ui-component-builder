@@ -69,7 +69,7 @@ function Sidebar() {
 
   function LogoutButton() {
     return (
-      <div className="p-[7px] hover:text-violet-500 select-none cursor-pointer ml-3 mt-24 text-[15px] rounded-lg flex items-center gap-2 w-[75%] text-slate-400">
+      <div className="p-[7px] hover:text-violet-500 select-none cursor-pointer ml-3 lg:mt-36 mt-64 text-[15px] rounded-lg flex items-center gap-2 w-[75%] text-slate-400">
         <LogOut />
         <span className="mt-0.5">Logout</span>
       </div>
