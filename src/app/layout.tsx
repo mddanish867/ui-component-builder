@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google"; //661 (gripped: 386)
 import "./globals.css";
+import { SidebarProvider } from "./SidebarContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${poppins.variable} antialiased`}>
-        {children}       
+      <body className={`${poppins.variable} antialiased`}>
+        <SidebarProvider> {/* Wrapping children with SidebarProvider */}
+          {children}
+        </SidebarProvider>
       </body>
     </html>
   );

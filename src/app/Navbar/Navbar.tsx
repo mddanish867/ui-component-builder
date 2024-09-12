@@ -23,13 +23,13 @@ function Navbar() {
   function Logo() {
     return (
       <div className="flex gap-2 items-center">
-        <div className={`bg-violet-500 flex items-center justify-center p-[6px] rounded-md`}>
+        <div className={`bg-green-600 flex items-center justify-center p-[6px] rounded-md`}>
           <div className="w-[26px h-[26px] items-center justify-center flex">
             <Code className="text-white text-[22px]" />
           </div>
         </div>
         <div className="flex gap-1 text-[22px]">
-          <span className={`font-bold text-violet-500`}>UI</span>
+          <span className={`font-bold text-green-600`}>UI</span>
           <span className={`font-bold text-slate-600`}>Code</span>
         </div>
       </div>
@@ -43,7 +43,7 @@ function Navbar() {
           // Render UserProfileComponent if user is authenticated
           <Link href="/dashboard"  >
               <button
-                className="max-sm:w-full text-sm border border-violet-500 text-white bg-violet-500 p-[8px] px-6 rounded-md"
+                className="max-sm:w-full text-sm border border-green-600 text-white bg-green-600 p-[8px] px-6 rounded-md"
               >
                 Dashboard
               </button>
@@ -53,14 +53,14 @@ function Navbar() {
           <>
             <Link href=""  onClick={handleLogin}>
               <button
-                className="max-sm:w-full text-sm border border-violet-500 text-white bg-violet-500 p-[8px] px-6 rounded-md"
+                className="max-sm:w-full text-sm border border-green-600 text-white bg-green-600 p-[8px] px-6 rounded-md"
               >
                 Sign In
               </button>
             </Link>
             <Link href="/sign-up">
               <button
-                className="max-sm:w-full text-sm border border-violet-500 hover:bg-violet-500 hover:text-white p-[8px] px-6 rounded-md"
+                className="max-sm:w-full text-sm border border-green-600 text-green-600 hover:bg-green-600 hover:text-white p-[8px] px-6 rounded-md"
               >
                 Sign Up
               </button>
