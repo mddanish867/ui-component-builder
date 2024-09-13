@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google"; //661 (gripped: 386)
 import "./globals.css";
 import { SidebarProvider } from "./SidebarContext";
+import { ProjectDataProvider } from "./DataContextAPI";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
         <SidebarProvider> {/* Wrapping children with SidebarProvider */}
+          <ProjectDataProvider>
           {children}
+          </ProjectDataProvider>          
         </SidebarProvider>
       </body>
     </html>

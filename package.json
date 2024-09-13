@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.0",
+    "@mui/styled-engine-sc": "^6.1.0",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "lucide": "^0.439.0",
@@ -16,12 +20,16 @@
     "next": "14.2.9",
     "react": "^18",
     "react-dom": "^18",
-    "react-router-dom": "^6.26.2"
+    "react-loader-spinner": "^6.1.6",
+    "react-router-dom": "^6.26.2",
+    "styled-components": "^6.1.13",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.9",
     "postcss": "^8",

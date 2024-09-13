@@ -2,6 +2,7 @@
 import { Code, LogOut, ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { useSidebarContext } from "../SidebarContext";
+import Link from "next/link";
 
 function Sidebar() {
   const {
@@ -96,6 +97,7 @@ function Sidebar() {
     const { openSideBar } = useSidebarContext();
 
     return (
+     <Link href="/">
       <div className="flex gap-2 items-center">
         <div className="bg-green-600 w-10 h-10 flex items-center justify-center p-[6px] rounded-md">
           <Code className="text-white text-[22px]" />
@@ -108,6 +110,7 @@ function Sidebar() {
           </div>
         )}
       </div>
+     </Link>
     );
   }
 
