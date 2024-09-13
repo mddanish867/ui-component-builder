@@ -1,19 +1,60 @@
 "use client";
 import { Code, LogOut, ArrowLeft, ArrowRight } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSidebarContext } from "../SidebarContext";
 
 function Sidebar() {
   const {
     openSideBar,
-    showSideBarObject: { showSideBar },
+    setOpenSideBar,
+    showSideBarObject: { showSideBar, setShowSideBar },
     isMobileViewObject: { isMobileView },
   } = useSidebarContext();
+  const menuRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        isMobileView
+      ) {
+        setShowSideBar(false);
+      }
+    }
+
+    if (showSideBar) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showSideBar, setShowSideBar, isMobileView]);
+
+  useEffect(() => {
+    if (isMobileView) {
+      setOpenSideBar(true);
+      setShowSideBar(false);
+    } else {
+      setShowSideBar(true);
+    }
+  }, [isMobileView]);
   return (
     <div
-      className={`h-screen ${openSideBar ? "w-[320px] p-6" : "w-[100px] p-4"} pt-12 relative transition-all duration-300 
-        ${isMobileView && !showSideBar ? "hidden" : ""}`} // Hide sidebar on mobile when `showSideBar` is false
+      ref={menuRef}
+      style={{ position: isMobileView ? "fixed" : "relative" }}
+      className={`${
+        openSideBar
+          ? isMobileView
+            ? "w-[200px] p-4"
+            : "w-[300px] p-6"
+          : "w-[100px] p-4"
+      } h-screen pt-12 transition-all duration-300 z-50 bg-white ${
+        isMobileView ? (showSideBar ? "block" : "hidden") : "block"
+      }`}
     >
       <RoundedArroricon />
       <Logo />
@@ -23,7 +64,11 @@ function Sidebar() {
   );
 
   function RoundedArroricon() {
-    const { openSideBar, setOpenSideBar } = useSidebarContext();
+    const {
+      openSideBar,
+      setOpenSideBar,
+      isMobileViewObject: { isMobileView },
+    } = useSidebarContext();
 
     function handleToggle() {
       setOpenSideBar(!openSideBar);
@@ -32,9 +77,11 @@ function Sidebar() {
     return (
       <div
         onClick={handleToggle}
-        className=" w-7 h-7 z-40 rounded-full absolute right-[-11px] top-[95px] flex items-center justify-center cursor-pointer"
+        className={`w-7 h-7 z-40 rounded-full absolute right-[-11px] top-[95px] flex items-center justify-center ${
+          !isMobileView ? "absolute" : "hidden"
+        }`}
       >
-        <div className="bg-green-600 rounded-full w-[70%] h-[70%] flex items-center justify-center">
+        <div className="bg-green-600 rounded-full w-[70%] h-[70%] flex items-center justify-center cursor-pointer">
           {openSideBar ? (
             <ArrowLeft fontSize="small" className="text-white text-[12px]" />
           ) : (

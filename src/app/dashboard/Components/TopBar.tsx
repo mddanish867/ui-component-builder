@@ -17,20 +17,15 @@ function TopBar() {
 
   function DashBoardText() {
     const {
-      showSideBarObject: { showSideBar, setShowSideBar },
-      isMobileViewObject: { isMobileView },
+      showSideBarObject: {  setShowSideBar },
     } = useSidebarContext();
   
-    const toggleSidebar = () => {
-      if (isMobileView) {
-        setShowSideBar(!showSideBar); // Toggle the sidebar visibility for mobile view
-      }
-    };
+   
   
     return (
       <div className="flex flex-col">
         {/* Menu icon for mobile screens */}
-        <div onClick={toggleSidebar} className="hidden max-sm:block">
+        <div onClick={() => setShowSideBar(true)} className="hidden max-sm:block">
           <Menu className="text-slate-500 cursor-pointer" />
         </div>
         <div className="flex flex-col max-sm:hidden">

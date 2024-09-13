@@ -157,8 +157,8 @@ const [showSideBar, setShowSideBar] = useState(false);
 
 useEffect(() => {
   function handleResize() {
-    setIsMobileView(window.innerWidth <= 640); // Mobile view when screen width is less than or equal to 640px
-    setShowSideBar(false); // Hide sidebar by default on mobile view
+    setIsMobileView(window.innerWidth <= 768); // Adjust for tablets or large mobile devices
+    setShowSideBar(window.innerWidth > 768); // Show sidebar by default on larger screens
   }
   handleResize(); // Initial check
   window.addEventListener("resize", handleResize); // Update on window resize
@@ -167,6 +167,7 @@ useEffect(() => {
     window.removeEventListener("resize", handleResize);
   };
 }, []);
+
 
   // Update the local storage whenever hide SiddeBar change
   useEffect(() => {
